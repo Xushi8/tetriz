@@ -9,8 +9,9 @@ PUBLIC
     terminal
     
     # package
-    fmt::fmt
     Threads::Threads
+    OpenMP::OpenMP_CXX
+    fmt::fmt
 
     # external
 )
