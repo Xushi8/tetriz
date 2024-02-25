@@ -12,11 +12,13 @@ if (NOT CMAKE_BUILD_TYPE)
     set (CMAKE_BUILD_TYPE Release)
 endif ()
 
-if (NOT CMAKE_UNITY_BUILD)
-    set (CMAKE_UNITY_BUILD ON)
-endif()
+if (NOT CMAKE_LINK_WHAT_YOU_USE)
+    set (CMAKE_LINK_WHAT_YOU_USE ON)
+endif ()
 
-project (more_thread LANGUAGES C CXX VERSION 0.0.0)
+# set (BUILD_SHARED_LIBS ON)
+
+project (tetriz LANGUAGES C CXX VERSION 0.0.0)
 
 include (${CMAKE_CURRENT_LIST_DIR}/cmake/options.cmake)
 include (${CMAKE_CURRENT_LIST_DIR}/cmake/compiler_options.cmake)
