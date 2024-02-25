@@ -1,1 +1,2 @@
 # tetriz
+A simple game.
