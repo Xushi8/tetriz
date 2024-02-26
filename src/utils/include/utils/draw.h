@@ -1,9 +1,7 @@
 #pragma once
 #include <string_view>
-#include <string>
 #include <utils/terminal.h>
 #include <fmt/core.h>
-#include <array>
 
 namespace tetriz
 {

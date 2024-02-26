@@ -1,4 +1,5 @@
 #include <utils/draw.h>
+#include <array>
 
 namespace
 {
