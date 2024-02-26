@@ -1,12 +1,12 @@
 add_executable (${PROJECT_NAME} main.cpp)
 
-add_subdirectory (terminal)
+add_subdirectory (utils)
 
 
 target_link_libraries (${PROJECT_NAME}
 PUBLIC
     # src
-    terminal
+    utils
     
     # package
     Threads::Threads
