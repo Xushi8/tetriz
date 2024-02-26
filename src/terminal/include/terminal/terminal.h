@@ -1,16 +1,12 @@
-#include <iostream>
-#include <vector>
-#include <cmath>
-#include <tbb/task_group.h>
-#include <tbb/parallel_for_each.h>
-#include <tbb/parallel_sort.h>
-#include <tbb/parallel_for.h>
-#include <tbb/parallel_pipeline.h>
-#include <tbb/parallel_invoke.h>
-#include <tbb/tick_count.h>
-// #include <tbb/tbb.h>
-#include <random>
-#include <execution>
-#include <fmt/format.h>
+#include <fmt/core.h>
 
-void tbb_test_func();
+namespace tetriz
+{
+void move_to(int row, int col);
+void set_fore_color(int color_id);
+void set_back_color(int color_id);
+void clean_screen();
+void reset_color();
+void hide_cursor();
+void show_cursor();
+} // namespace tetriz
