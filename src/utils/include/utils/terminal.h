@@ -1,5 +1,5 @@
 #pragma once
-#include <fmt/core.h>
+#include <cstddef>
 
 namespace tetriz
 {

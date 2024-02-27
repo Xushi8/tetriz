@@ -5,6 +5,8 @@
 #include <termios.h>
 #include <cstdio>
 #include <thread>
+// #include <fmt/core.h>
+#include <iostream>
 
 namespace tetriz
 {
@@ -19,16 +21,33 @@ char getch()
 	tcsetattr(0, 0, &old);
 	return ch;
 }
-
-static char command = '\0';
+static bool game_running;
+static size_t row, col;
+static char command;
 void key_event()
 {
-	while (1)
+	while (game_running)
 	{
 		command = static_cast<char>(getch());
 		if (command == 'q')
 		{
-			break;
+			command_q();
+		}
+		else if (command == 'a')
+		{
+			command_a();
+		}
+		else if (command == 'd')
+		{
+			command_d();
+		}
+		else if (command == 'w')
+		{
+			command_rotate();
+		}
+		else if (command == 's')
+		{
+			command_s();
 		}
 	}
 }
@@ -41,14 +60,16 @@ inline void key_listener()
 
 void init()
 {
+	game_running = true;
+	row = 2;
+	col = 15;
 	hide_cursor();
 	key_listener();
 }
 
 void loop()
 {
-	size_t row = 1;
-	while (1)
+	while (game_running)
 	{
 		clean_screen();
 
@@ -59,22 +80,44 @@ void loop()
 		draw_window(1, 22, 8, 18, "Hold");
 
 		move_to(10, 4);
-		fmt::print("FPS: {}", fps());
+		// fmt::print("FPS: {}", fps());
+		std::cout << "FPS: " << fps();
 
-		move_to(row++ % 20, 10);
+		move_to(row, col);
 		set_back_color(123);
-		fmt::print("  ");
+		// fmt::print("  ");
+		std::cout << "  ";
 		reset_color();
 		fflush(stdout);
-
-		if (command == 'q')
-		{
-			break;
-		}
 
 		using namespace std::chrono_literals;
 		std::this_thread::sleep_for(100ms);
 	}
+}
+
+void command_q()
+{
+	game_running = false;
+}
+
+void command_a()
+{
+	col--;
+}
+
+void command_d()
+{
+	col++;
+}
+
+void command_rotate()
+{
+	row--;
+}
+
+void command_s()
+{
+	row++;
 }
 
 void exit()
@@ -84,7 +127,8 @@ void exit()
 	clean_screen();
 	move_to(1, 1);
 	set_fore_color(9);
-	fmt::print("Bye!\n");
+	// fmt::print("Bye!\n");
+	std::cout << "Bye!" << std::endl;
 }
 
 } // namespace tetriz

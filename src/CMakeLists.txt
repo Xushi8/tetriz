@@ -11,7 +11,7 @@ PUBLIC
     # package
     Threads::Threads
     OpenMP::OpenMP_CXX
-    fmt::fmt
+    # fmt::fmt
 
     # external
 )
